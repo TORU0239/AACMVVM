@@ -53,8 +53,31 @@ class RemoteRepository {
             Log.w("TORU", "datalist size: " + dataList.size)
 
             val returnvalue = MutableLiveData<List<String>>()
-            returnvalue.postValue(dataList)
+            returnvalue.value = dataList
             return returnvalue
+        }
+
+        fun testDataUpdate2(liveData:MutableLiveData<List<String>>){
+            Log.w("TORU","testDataUpdate2 Load Start")
+
+            val dataList = ArrayList<String>()
+            dataList.add("11")
+            dataList.add("21")
+            dataList.add("31")
+            dataList.add("41")
+            dataList.add("51")
+            dataList.add("61")
+            dataList.add("71")
+            dataList.add("81")
+            dataList.add("91")
+            dataList.add("101")
+            dataList.add("181")
+            dataList.add("191")
+            dataList.add("201")
+
+            liveData.value = dataList
+
+            Log.w("TORU", "datalist size: " + dataList.size)
         }
     }
 }
