@@ -1,5 +1,8 @@
 package my.toru.aacmvvm.data.remote
 
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
+import android.util.Log
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -30,6 +33,28 @@ class RemoteRepository {
                     .client(initOkhttp())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
+        }
+
+        fun testDataUpdate(): MutableLiveData<List<String>> {
+            Log.w("TORU","testDataUpdate Load Start")
+
+            val dataList = ArrayList<String>()
+            dataList.add("1")
+            dataList.add("2")
+            dataList.add("3")
+            dataList.add("4")
+            dataList.add("5")
+            dataList.add("6")
+            dataList.add("7")
+            dataList.add("8")
+            dataList.add("9")
+            dataList.add("10")
+
+            Log.w("TORU", "datalist size: " + dataList.size)
+
+            val returnvalue = MutableLiveData<List<String>>()
+            returnvalue.postValue(dataList)
+            return returnvalue
         }
     }
 }
