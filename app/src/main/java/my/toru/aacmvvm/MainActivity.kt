@@ -6,12 +6,8 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
-import kotlinx.android.synthetic.main.activity_main.*
 import my.toru.aacmvvm.data.model.MainLifeCycleObserver
-import my.toru.aacmvvm.ui.MainAdapter
 import my.toru.aacmvvm.presenter.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -28,10 +24,13 @@ class MainActivity : AppCompatActivity() {
 
         // to track lifecycle
         lifecycle.addObserver(mainLifecycleObserver)
-        //
+
+
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        viewModel.getTestData().observe(this, Observer{
-            Log.w("TORU", "observable")
+        viewModel.getTestData().observe(this, object: Observer<List<String>>{
+            override fun onChanged(t: List<String>?) {
+                Log.w("TORU", "onChanged!!, size:: " + t?.size)
+            }
         })
 
 //        viewModel.getDataList().observe(this, Observer {
