@@ -1,6 +1,5 @@
 package my.toru.aacmvvm.data.remote
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.util.Log
 import okhttp3.OkHttpClient
