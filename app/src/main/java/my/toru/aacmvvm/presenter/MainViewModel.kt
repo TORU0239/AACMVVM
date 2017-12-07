@@ -12,13 +12,13 @@ import my.toru.aacmvvm.data.remote.RemoteRepository
  */
 class MainViewModel: ViewModel() {
     private var dataList:LiveData<List<DummyData>>
-    private var testData:MutableLiveData<List<String>>
+    private var testData:MutableLiveData<ArrayList<String>>
 
     init {
         Log.w("TORU", " init!!")
         dataList = MutableLiveData<List<DummyData>>()
-        testData = MutableLiveData<List<String>>()
-        testData.value = ArrayList()
+        testData = MutableLiveData<ArrayList<String>>()
+        testData.value = ArrayList<String>()
     }
 
     fun loadData(){

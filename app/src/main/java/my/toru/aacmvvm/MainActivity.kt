@@ -27,23 +27,11 @@ class MainActivity : AppCompatActivity() {
 
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        viewModel.getTestData().observe(this, object: Observer<List<String>>{
-            override fun onChanged(t: List<String>?) {
+        viewModel.getTestData().observe(this, object: Observer<ArrayList<String>>{
+            override fun onChanged(t: ArrayList<String>?) {
                 Log.w("TORU", "onChanged!!, size:: " + t?.size)
             }
         })
-
-//        viewModel.getDataList().observe(this, Observer {
-//            // UI Update
-//            t -> t?.let {
-//            val mainAdapter = mainRecyclerview.adapter as MainAdapter
-//            with(mainAdapter) {
-//                    list = t
-//                    notifyDataSetChanged()
-//                }
-//            }
-//        })
-//        initUI()
 
         Handler().postDelayed({
             Log.w("TORU","PostDelayed")
@@ -55,13 +43,4 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         lifecycle.removeObserver(mainLifecycleObserver)
     }
-
-//    private fun initUI(){
-//        with(mainRecyclerview){
-//            adapter = MainAdapter(ArrayList())
-//            layoutManager = LinearLayoutManager(ctx)
-//            setHasFixedSize(true)
-//            addItemDecoration(DividerItemDecoration(ctx,DividerItemDecoration.VERTICAL))
-//        }
-//    }
 }
