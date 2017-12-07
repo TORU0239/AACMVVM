@@ -56,7 +56,7 @@ class RemoteRepository {
             return returnvalue
         }
 
-        fun testDataUpdate2(liveData:MutableLiveData<List<String>>){
+        fun testDataUpdate2(liveData:MutableLiveData<ArrayList<String>>){
             Log.w("TORU","testDataUpdate2 Load Start")
 
             val dataList = ArrayList<String>()
