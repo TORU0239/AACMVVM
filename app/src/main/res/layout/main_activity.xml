@@ -6,11 +6,15 @@
     <data>
         <!--<import type="android.databinding.adapters.Converters"/>-->
         <import type="android.view.View"/>
-        <!--<import type="my.toru.aacmvvm.R"/>-->
+        <import type="my.toru.aacmvvm.R"/>
 
         <variable
             name="loginModel"
             type="my.toru.aacmvvm.data.model.LoginModel"/>
+
+        <variable
+            name="loginVM"
+            type="my.toru.aacmvvm.viewmodel.LoginViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -68,7 +72,8 @@
                 android:text="SIGN IN"
                 android:textSize="17sp"
                 android:textStyle="bold"
-                android:theme="@style/SephoraButtonStyle"/>
+                android:theme="@style/SephoraButtonStyle"
+                android:onClick="@{loginVM.onLoginButtonClicked}"/>
         </LinearLayout>
 
         <TextView

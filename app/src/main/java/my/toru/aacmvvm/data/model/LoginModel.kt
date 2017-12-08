@@ -14,7 +14,6 @@ class LoginModel : BaseObservable() {
     companion object {
         private val TAG = LoginModel::class.java.simpleName
     }
-    // LoginModel has two entities
 
     var emailAddress:String = ""
     @Bindable get

@@ -17,13 +17,7 @@ class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val dataBinding : MainActivityBinding = DataBindingUtil.setContentView(MainActivity@this, R.layout.main_activity)
-        val loginVM = ViewModelProviders.of(MainActivity@this).get(LoginViewModel::class.java)
-
         dataBinding.loginModel = LoginModel()
-        dataBinding.executePendingBindings()
-
-        dataBinding.btnLogin.setOnClickListener{
-            loginVM.onLoginButtonClicked()
-        }
+        dataBinding.loginVM = ViewModelProviders.of(MainActivity@this).get(LoginViewModel::class.java)
     }
 }
