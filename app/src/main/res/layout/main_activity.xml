@@ -3,6 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <!--<import type="android.databinding.adapters.Converters"/>-->
+        <import type="android.view.View"/>
+        <!--<import type="my.toru.aacmvvm.R"/>-->
+
+        <variable
+            name="loginModel"
+            type="my.toru.aacmvvm.data.model.LoginModel"/>
+    </data>
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
@@ -29,7 +39,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="E-Mail"
-                    android:inputType="textEmailAddress"/>
+                    android:inputType="textEmailAddress"
+                    app:addTextChangedListener="@{loginModel.getEmailTextWatcher}"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -43,7 +54,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    app:addTextChangedListener="@{loginModel.getPasswordTextWatcher}"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.v7.widget.AppCompatButton
