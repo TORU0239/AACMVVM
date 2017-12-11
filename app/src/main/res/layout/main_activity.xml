@@ -8,9 +8,9 @@
         <import type="android.view.View"/>
         <import type="my.toru.aacmvvm.R"/>
 
-        <variable
-            name="loginModel"
-            type="my.toru.aacmvvm.data.model.LoginModel"/>
+        <!--<variable-->
+            <!--name="loginModel"-->
+            <!--type="my.toru.aacmvvm.data.model.LoginModel"/>-->
 
         <variable
             name="loginVM"
@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:hint="E-Mail"
                     android:inputType="textEmailAddress"
-                    app:addTextChangedListener="@{loginModel.getEmailTextWatcher}"/>
+                    android:text="@={loginVM.emailData}"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Password"
                     android:inputType="text"
-                    app:addTextChangedListener="@{loginModel.getPasswordTextWatcher}"/>
+                    android:text="@={loginVM.passwordData}"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.v7.widget.AppCompatButton
