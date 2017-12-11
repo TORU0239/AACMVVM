@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="my.toru.aacmvvm">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.GithubActivity"
+            android:name=".ui.StackOverFlowActivity"
             android:label="@string/title_activity_github"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>

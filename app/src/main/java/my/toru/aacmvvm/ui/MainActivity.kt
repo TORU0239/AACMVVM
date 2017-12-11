@@ -29,7 +29,7 @@ class MainActivity: AppCompatActivity() {
             t -> Log.w(TAG, "message:: $t")
             when(t){
                 "check Login Status Success!!" -> {
-                    startActivity(Intent(MainActivity@this, GithubActivity::class.java))
+                    startActivity(Intent(MainActivity@this, StackOverFlowActivity::class.java))
                     finish()
                 }
                 else -> Toast.makeText(MainActivity@this, "Failed to Sign In!", Toast.LENGTH_SHORT).show()

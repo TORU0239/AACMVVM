@@ -1,0 +1,53 @@
+package my.toru.aacmvvm.viewmodel
+
+import android.arch.lifecycle.Lifecycle
+import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.OnLifecycleEvent
+import android.arch.lifecycle.ViewModel
+import android.util.Log
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
+import my.toru.aacmvvm.data.remote.RemoteRepository
+import my.toru.aacmvvm.data.remote.StackOverFlowService
+
+/**
+ * Created by toruchoi on 11/12/2017.
+ */
+class StackOverFlowViewModel: ViewModel(), LifecycleObserver {
+    companion object {
+        private val TAG = StackOverFlowViewModel::class.java.simpleName
+        private val BASE_URL = "https://api.stackexchange.com/"
+    }
+
+    private val disposable:CompositeDisposable = CompositeDisposable()
+
+    fun getQuestion(){
+        disposable.add(RemoteRepository.initRetrofit(BASE_URL)
+                        .create(StackOverFlowService::class.java)
+                        .getQuestion()
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.io())
+                        .map { it.items }
+                        .subscribe({ result -> Log.w(TAG, "onNext, " + result.size)},
+                                { e -> e.printStackTrace()},
+                                { Log.w(TAG, "onComplete")}))
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        Log.w(TAG, "onCleared")
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun start(){
+
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    fun pause(){
+        if(!disposable.isDisposed){
+            disposable.dispose()
+        }
+    }
+}
