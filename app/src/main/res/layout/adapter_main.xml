@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="stackoverflowModel"
+            type="my.toru.aacmvvm.data.model.StackOverFlowItemModel"/>
+    </data>
 
-    <TextView
-        android:id="@+id/txtMainAdapter"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="test"/>
+        android:padding="16dp">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/txtMainAdapter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{stackoverflowModel.title}"
+            tools:text="test"/>
+    </RelativeLayout>
+</layout>

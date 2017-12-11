@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
  * Created by toruchoi on 11/12/2017.
  */
 
-data class StackOverFlowModel(val items:List<StackOverFlowItemModel>)
+data class StackOverFlowModel(val items:ArrayList<StackOverFlowItemModel>)
 data class StackOverFlowItemModel(@SerializedName("is_answered")    val isAnswered:Boolean,
                               @SerializedName("view_count")     val viewCount:String,
                               val score:String,
