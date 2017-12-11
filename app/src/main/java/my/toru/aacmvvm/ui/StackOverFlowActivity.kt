@@ -1,9 +1,11 @@
 package my.toru.aacmvvm.ui
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.BottomSheetDialog
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import kotlinx.android.synthetic.main.stackoverflow_activity.*
 import my.toru.aacmvvm.R
 import my.toru.aacmvvm.viewmodel.StackOverFlowViewModel
@@ -23,6 +25,11 @@ class StackOverFlowActivity : AppCompatActivity() {
         initBottomSheet()
 
         viewModel = ViewModelProviders.of(StackOverFlowActivity@this).get(StackOverFlowViewModel::class.java)
+        viewModel.questionModel.observe(StackOverFlowActivity@this, Observer {
+            it?.forEach {
+                Log.w(TAG, "link: ${it.link}")
+            }
+        })
 
         fab.setOnClickListener { viewModel.getQuestion()}
     }
