@@ -17,8 +17,12 @@ class LoginViewModel : ViewModel() {
     var emailData = ObservableField<String>()
     var passwordData = ObservableField<String>()
 
-
     var observedData = MutableLiveData<String>()
+
+    init {
+        emailData.set("")
+        passwordData.set("")
+    }
 
     fun onLoginButtonClicked(v:View){
         Log.w(TAG, "onLoginButtonClicked")
@@ -27,6 +31,9 @@ class LoginViewModel : ViewModel() {
         if(checkLoginStatus()){
             // let's say we are using login api, and get preload data from api
             observedData.postValue("check Login Status Success!!")
+        }
+        else{
+            observedData.postValue("Failed!")
         }
     }
 
