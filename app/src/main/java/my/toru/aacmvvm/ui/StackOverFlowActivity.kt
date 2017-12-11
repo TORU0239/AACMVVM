@@ -5,7 +5,9 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.BottomSheetDialog
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView.VERTICAL
 import kotlinx.android.synthetic.main.stackoverflow_activity.*
 import my.toru.aacmvvm.R
 import my.toru.aacmvvm.viewmodel.StackOverFlowViewModel
@@ -30,7 +32,11 @@ class StackOverFlowActivity : AppCompatActivity() {
             }
         })
 
-        setSupportActionBar(toolbar)
+        with(toolbar){
+            title = getString(R.string.title_activity_github)
+            setSupportActionBar(this)
+        }
+        
         initRecyclerView()
         initBottomSheet()
 
@@ -41,6 +47,7 @@ class StackOverFlowActivity : AppCompatActivity() {
         with(rcv_recycler_view){
             layoutManager = LinearLayoutManager(this@StackOverFlowActivity)
             adapter = StackOverFlowAdapter(viewModel.questionModel.value!!)
+            addItemDecoration(DividerItemDecoration(applicationContext, VERTICAL))
         }
     }
 
