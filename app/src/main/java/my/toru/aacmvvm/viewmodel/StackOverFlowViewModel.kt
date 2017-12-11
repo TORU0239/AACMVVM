@@ -18,9 +18,12 @@ class StackOverFlowViewModel: ViewModel(), LifecycleObserver {
         private val BASE_URL = "https://api.stackexchange.com/"
     }
 
-    private val disposable:CompositeDisposable = CompositeDisposable()
+    val questionModel = MutableLiveData<ArrayList<StackOverFlowItemModel>>()
+    init {
+        questionModel.value = ArrayList()
+    }
 
-    val questionModel = MutableLiveData<List<StackOverFlowItemModel>>()
+    private val disposable:CompositeDisposable = CompositeDisposable()
 
     fun getQuestion(){
         disposable.add(RemoteRepository.initRetrofit(BASE_URL)

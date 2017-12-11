@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">AACMVVM</string>
-    <string name="title_activity_github">GithubActivity</string>
+    <string name="title_activity_github">QuestionActivity</string>
 </resources>
