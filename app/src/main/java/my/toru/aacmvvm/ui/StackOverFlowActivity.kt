@@ -47,9 +47,7 @@ class StackOverFlowActivity : AppCompatActivity() {
     private fun initRecyclerView(){
         with(rcv_recycler_view){
             layoutManager = LinearLayoutManager(this@StackOverFlowActivity)
-            adapter = StackOverFlowAdapter(viewModel.questionModel.value!!){
-                startActivity(Intent(this@StackOverFlowActivity, DetailActivity::class.java))
-            }
+            adapter = StackOverFlowAdapter(viewModel.questionModel.value!!)
             addItemDecoration(DividerItemDecoration(applicationContext, VERTICAL))
         }
     }
