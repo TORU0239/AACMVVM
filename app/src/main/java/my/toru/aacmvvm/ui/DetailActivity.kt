@@ -1,9 +1,13 @@
 package my.toru.aacmvvm.ui
 
+import android.databinding.BindingAdapter
 import android.databinding.DataBindingUtil
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.Html
 import android.util.Log
+import android.widget.TextView
 import my.toru.aacmvvm.BR
 import my.toru.aacmvvm.R
 import my.toru.aacmvvm.data.model.StackOverFlowItemModel
