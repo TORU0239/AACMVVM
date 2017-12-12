@@ -1,5 +1,6 @@
 package my.toru.aacmvvm.ui
 
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -20,7 +21,7 @@ class StackOverFlowAdapter(var itemList:ArrayList<StackOverFlowItemModel>):Recyc
 
     override fun getItemCount(): Int = itemList.size
 
-    override fun onBindViewHolder(holder: QuestionVH?, position: Int) {
+    override fun onBindViewHolder(holder: QuestionVH?, position: Int){
         holder?.bindData(itemList[position])
     }
 }
@@ -29,5 +30,10 @@ class QuestionVH(private val itemViewBinding:AdapterMainBinding):RecyclerView.Vi
     fun bindData(questionData: StackOverFlowItemModel){
         itemViewBinding.stackoverflowModel = questionData
         itemViewBinding.executePendingBindings()
+        itemViewBinding.root.setOnClickListener {
+            it.context?.let {
+                it.startActivity(Intent(it, DetailActivity::class.java).putExtra("DATA", questionData))
+            }
+        }
     }
 }

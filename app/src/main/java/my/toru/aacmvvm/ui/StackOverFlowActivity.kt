@@ -2,6 +2,7 @@ package my.toru.aacmvvm.ui
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomSheetDialog
 import android.support.v7.app.AppCompatActivity
@@ -36,7 +37,7 @@ class StackOverFlowActivity : AppCompatActivity() {
             title = getString(R.string.title_activity_github)
             setSupportActionBar(this)
         }
-        
+
         initRecyclerView()
         initBottomSheet()
 
