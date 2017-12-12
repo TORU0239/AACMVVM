@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="detailVM"
             type="my.toru.aacmvvm.viewmodel.DetailDatabindingModel"/>
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="my.toru.aacmvvm.ui.DetailActivity">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -23,13 +22,62 @@
             app:titleTextColor="@android:color/white"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <LinearLayout
+            android:id="@+id/information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="10dp"
+                android:text="@{detailVM.itemModel.owner.displayName}"
+                tools:text="name" />
 
-        <!-- android:text="@{detailVM.itemModel.body}"-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="10dp"
+                android:text="@{detailVM.itemModel.owner.userType}"
+                tools:text="user type" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="10dp"
+                android:text="@{detailVM.itemModel.owner.acceptRate}"
+                tools:text="acceptRate" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="10dp"
+                android:text="@{detailVM.itemModel.owner.reputation}"
+                tools:text="reputation" />
+        </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/information"
+            android:layout_below="@id/toolbar"
             android:padding="16dp"
+            android:lineSpacingExtra="2dp"
+            tools:text="pbody"
             app:htmlText="@{detailVM.itemModel.body}"
             android:textColor="@color/colorPrimary" />
-    </LinearLayout>
+
+    </RelativeLayout>
 </layout>
