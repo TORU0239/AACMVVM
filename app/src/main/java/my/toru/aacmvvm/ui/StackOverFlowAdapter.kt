@@ -11,7 +11,8 @@ import my.toru.aacmvvm.databinding.AdapterMainBinding
 /**
  * Created by toruchoi on 11/12/2017.
  */
-class StackOverFlowAdapter(var itemList:ArrayList<StackOverFlowItemModel>):RecyclerView.Adapter<QuestionVH>(){
+class StackOverFlowAdapter(var itemList:ArrayList<StackOverFlowItemModel>,
+                           private val listener:(StackOverFlowItemModel)->Unit):RecyclerView.Adapter<QuestionVH>(){
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): QuestionVH {
         val binding:AdapterMainBinding = DataBindingUtil.inflate(LayoutInflater.from(parent?.context), R.layout.adapter_main, parent, false)
@@ -20,14 +21,15 @@ class StackOverFlowAdapter(var itemList:ArrayList<StackOverFlowItemModel>):Recyc
 
     override fun getItemCount(): Int = itemList.size
 
-    override fun onBindViewHolder(holder: QuestionVH?, position: Int) {
-        holder?.bindData(itemList[position])
+    override fun onBindViewHolder(holder: QuestionVH?, position: Int){
+        holder?.bindData(itemList[position], listener)
     }
 }
 
 class QuestionVH(private val itemViewBinding:AdapterMainBinding):RecyclerView.ViewHolder(itemViewBinding.root){
-    fun bindData(questionData: StackOverFlowItemModel){
+    fun bindData(questionData: StackOverFlowItemModel, listener:(StackOverFlowItemModel)->Unit){
         itemViewBinding.stackoverflowModel = questionData
         itemViewBinding.executePendingBindings()
+        itemViewBinding.root.setOnClickListener { listener(questionData) }
     }
 }
