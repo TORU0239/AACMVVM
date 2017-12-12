@@ -23,11 +23,13 @@
             app:titleTextColor="@android:color/white"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+
+        <!-- android:text="@{detailVM.itemModel.body}"-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp"
-            android:text="@{detailVM.itemModel.body}"
+            app:htmlText="@{detailVM.itemModel.body}"
             android:textColor="@color/colorPrimary" />
     </LinearLayout>
 </layout>
